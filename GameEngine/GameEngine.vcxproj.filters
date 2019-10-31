@@ -21,14 +21,28 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="tester_stb.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vertexShader.txt" />
     <Text Include="fragmenetShader.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="pic.jpg">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="container.jpg">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
   </ItemGroup>
 </Project>
