@@ -6,8 +6,10 @@ Shader::Shader(const char * vertexPath, const char* fragmentPath){
 	// coger los vertex / fragement source code form file
 	string vertexCode;
 	string fragmentCode;
+	string geometryCode;
 	ifstream vShaderFile;
 	ifstream fShaderFile;
+	ifstream gShaderFile;
 	stringstream vShaderStream;
 	stringstream fShaderStream;
 
@@ -16,6 +18,7 @@ Shader::Shader(const char * vertexPath, const char* fragmentPath){
 
 	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	gShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 
 	try
 	{
@@ -32,6 +35,14 @@ Shader::Shader(const char * vertexPath, const char* fragmentPath){
 		vertexCode = vShaderStream.str();
 		fragmentCode = fShaderStream.str();
 
+		// if geometry shader path is present, also load a geometry shader
+		/*if (geometryPath != nullptr) {
+			gShaderFile.open(geometryPath);
+			stringstream gShaderStream;
+			gShaderStream << gShaderFile.rdbuf();
+			gShaderFile.close();
+			geometryCode = gShaderStream.str();
+		}*/
 	}
 	catch (const std::exception& e )
 	{
@@ -54,7 +65,15 @@ Shader::Shader(const char * vertexPath, const char* fragmentPath){
 	glShaderSource(fragment, 1, &fShaderCode, NULL);
 	glCompileShader(fragment);
 	checkCompileErrors(fragment, "FRAGMENT");
-
+	unsigned int geometry;
+	/*if (geometryPath != nullptr)
+	{
+		const char * gShaderCode = geometryCode.c_str();
+		geometry = glCreateShader(GL_GEOMETRY_SHADER);
+		glShaderSource(geometry, 1, &gShaderCode, NULL);
+		glCompileShader(geometry);
+		checkCompileErrors(geometry, "GEOMETRY");
+	}*/
 
 	//shader program
 	ID = glCreateProgram();
@@ -72,6 +91,7 @@ Shader::Shader(const char * vertexPath, const char* fragmentPath){
 void Shader::use() {
 	glUseProgram(ID);
 }
+
 
 void Shader::checkCompileErrors(unsigned int ID, std::string type) {
 
@@ -94,5 +114,6 @@ void Shader::checkCompileErrors(unsigned int ID, std::string type) {
 			cout << "program linking error : " << infoLog << endl;
 		}
 	}
+
 
 }

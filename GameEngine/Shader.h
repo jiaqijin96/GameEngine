@@ -16,8 +16,11 @@ public:
 	Shader(const char * vertexPath, const char* fragmentPath);
 	//~Shader();
 	void use();
+	
 
 private :
 	void checkCompileErrors(unsigned int ID, std::string type);
+	void setInt(const std::string &name, int value);
+
 };
 

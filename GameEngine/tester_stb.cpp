@@ -1,16 +1,15 @@
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-/*using namespace std;
+using namespace std;
 
-int main2(void) {
+/*int main212(void) {
 
-	int width, height, nrChannels;
-	unsigned char *data = stbi_load("pic.jpg", &width, &height, &nrChannels, 0);
-
-	for (size_t i = 0; i < 50; i++)
-	{
-		cout << (int)data[i] << endl;
-	}
-
-	return 0;*
+	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+	vec = trans * vec;
+	std::cout << vec.x << vec.y << vec.z << std::endl;
 }*/
